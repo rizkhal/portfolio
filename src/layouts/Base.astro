@@ -1,0 +1,58 @@
+---
+import '@fontsource-variable/geist'
+import '@fontsource-variable/geist-mono'
+import '../styles/global.css'
+
+interface Props {
+  title: string
+  description: string
+}
+
+const { title, description } = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0a0a0b" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="canonical" href="https://rizkal.wtf/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://rizkal.wtf/" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://rizkal.wtf/avatar.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@rixzkl" />
+  </head>
+  <body class="min-h-[100dvh] antialiased">
+    <slot />
+
+    <script>
+      const items = document.querySelectorAll<HTMLElement>('.reveal')
+      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+
+      if (reduce || !('IntersectionObserver' in window)) {
+        items.forEach((el) => el.classList.add('is-in'))
+      } else {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-in')
+                io.unobserve(entry.target)
+              }
+            }
+          },
+          { rootMargin: '0px 0px -12% 0px', threshold: 0.15 },
+        )
+        items.forEach((el) => io.observe(el))
+      }
+    </script>
+  </body>
+</html>

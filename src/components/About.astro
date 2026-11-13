@@ -1,0 +1,51 @@
+---
+const elsewhere = [
+  { label: 'GitHub', href: 'https://github.com/rizkhal', handle: 'rizkhal' },
+  { label: 'X', href: 'https://x.com/rixzkl', handle: '@rixzkl' },
+]
+---
+
+<section id="about" class="wrap py-16 md:py-24">
+  <div class="grid gap-12 lg:grid-cols-12 lg:gap-10">
+    <div class="lg:col-span-7">
+      <h2 class="text-2xl tracking-tight md:text-3xl">About</h2>
+
+      <div class="mt-6 max-w-[65ch] space-y-5 text-sm leading-relaxed text-muted md:text-base">
+        <p>
+          I work at Lamaau Labs in Jakarta, mostly on internal tools that turn awkward public data
+          into something a person can actually use. Legal corpora, fisheries statistics, vessel
+          positions, satellite tiles. The interesting part is rarely the model. It is the ingest, the
+          cache, and the one field that arrives as a string on Tuesdays.
+        </p>
+        <p>
+          Everything I build runs on infrastructure I can read end to end: Postgres, SQLite, Hono,
+          Docker, one VPS, and a reverse proxy. I would rather ship a boring system that survives
+          contact with real data than a clever one that needs a babysitter.
+        </p>
+      </div>
+    </div>
+
+    <div class="lg:col-span-5 lg:pl-10">
+      <h3 class="font-mono text-[11px] uppercase tracking-[0.14em] text-faint">Elsewhere</h3>
+      <ul class="mt-4 grid gap-px bg-line">
+        {
+          elsewhere.map((item) => (
+            <li class="bg-bg">
+              <a
+                href={item.href}
+                target="_blank"
+                rel="noopener me"
+                class="group flex items-center justify-between gap-4 py-4"
+              >
+                <span class="text-sm text-text transition-colors group-hover:text-accent">
+                  {item.label}
+                </span>
+                <span class="font-mono text-xs text-muted">{item.handle}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

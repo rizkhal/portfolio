@@ -1,0 +1,26 @@
+---
+import { stackGroups } from '../data/projects'
+---
+
+<section id="stack" class="border-y border-line bg-surface">
+  <div class="wrap py-16 md:py-24">
+    <h2 class="text-2xl tracking-tight md:text-3xl">What I reach for</h2>
+
+    <div class="mt-10 grid gap-x-12 gap-y-9 md:grid-cols-2">
+      {
+        stackGroups.map((group, index) => (
+          <div class="reveal" style={`--reveal-delay: ${(index % 2) * 60}ms`}>
+            <h3 class="font-mono text-[11px] uppercase tracking-[0.14em] text-faint">
+              {group.title}
+            </h3>
+            <ul class="mt-3 flex flex-wrap gap-1.5">
+              {group.items.map((item) => (
+                <li class="tag">{item}</li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
