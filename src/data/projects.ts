@@ -8,36 +8,12 @@ export type Project = {
 
 export const featured: Project[] = [
   {
-    name: 'Pedoman',
-    year: '2026',
+    name: 'Inertable',
+    year: '2024',
     summary:
-      'Indonesian legal research platform. The corpus from peraturan.go.id lives in Postgres and is served four ways: RAG chat, regulation genealogy, an admin console, and an MCP server.',
-    stack: ['TypeScript', 'Hono', 'Postgres', 'Expo', 'MCP'],
-    href: 'https://github.com/rizkhal/pedoman',
-  },
-  {
-    name: 'OCEANGAZE',
-    year: '2026',
-    summary:
-      'Live AIS and VMS vessel map for Indonesian waters. A Hono API with snapshot and detail caching sits in front of the feed, with a Leaflet map, filters, and detail cards on top.',
-    stack: ['React 19', 'Hono', 'Leaflet', 'pnpm'],
-    href: 'https://github.com/rizkhal/oceangaze',
-  },
-  {
-    name: 'CoastDet',
-    year: '2026',
-    summary:
-      'Coastal object detection from sub-meter satellite imagery: ships, docks, tanks, ponds, and construction, plus change detection between two epochs of the same tile.',
-    stack: ['Python', 'YOLO OBB', 'FastAPI', 'GeoJSON'],
-    href: 'https://github.com/rizkhal/tangkap',
-  },
-  {
-    name: 'SIP-MCP',
-    year: '2026',
-    summary:
-      'MCP server that puts Ministry of Marine Affairs data in front of an LLM: a live statistics API plus a 1,900-document regulation corpus indexed in SQLite FTS5.',
-    stack: ['TypeScript', 'MCP', 'SQLite FTS5'],
-    href: 'https://github.com/rizkhal/sip-mcp',
+      'Headless datatable for Laravel and Inertia. Sorting, filtering, and pagination run server-side while the markup stays entirely yours. Published on Packagist, tested in CI.',
+    stack: ['PHP', 'Laravel', 'Inertia', 'Vue'],
+    href: 'https://github.com/rizkhal/inertable',
   },
   {
     name: 'Picly',
@@ -48,85 +24,109 @@ export const featured: Project[] = [
     href: 'https://github.com/rizkhal/picly',
   },
   {
-    name: 'Inertable',
-    year: '2025',
+    name: 'AniFlix',
+    year: '2023',
     summary:
-      'Headless datatable for Laravel and Inertia. Server-side sorting, filtering, and pagination with the markup left entirely to you. Published on Packagist.',
-    stack: ['PHP', 'Laravel', 'Inertia', 'Vue'],
-    href: 'https://github.com/rizkhal/inertable',
-  },
-]
-
-export const more: Project[] = [
-  {
-    name: 'ReelFarm',
-    year: '2026',
-    summary: 'Self-hosted video segmentation and subtitle workflow: transcribe, split clips, review segments.',
-    stack: ['TypeScript', 'Docker'],
-    href: 'https://github.com/rizkhal/reelfarm',
-  },
-  {
-    name: 'Freebufg',
-    year: '2026',
-    summary: 'OpenAI-compatible gateway in front of Freebuff, with a dashboard for sessions, logs, and keys.',
-    stack: ['Hono', 'SQLite', 'React'],
-    href: 'https://github.com/rizkhal/freebufg',
+      'Anime streaming desktop app built with Electron, Vite, and Vue 3. Featured on Product Hunt, with a separate API service behind it.',
+    stack: ['Electron', 'Vue 3', 'Vite'],
+    href: 'https://github.com/rizkhal/aniflix',
   },
   {
     name: 'Laporan',
     year: '2026',
-    summary: 'Monthly engineering reports generated from commit history across many repositories.',
-    stack: ['Hono', 'TypeScript', 'LLM'],
+    summary:
+      'Monthly engineering reports generated from commit history across many repositories. Collects commits, analyses them through an LLM, and renders three report styles.',
+    stack: ['Hono', 'Drizzle', 'SQLite', 'React'],
     href: 'https://github.com/rizkhal/laporan',
   },
   {
-    name: 'PDF-MCP',
-    year: '2026',
-    summary: 'Generic PDF to SQLite FTS5 engine with an MCP server, reusable for any document corpus.',
-    stack: ['Python', 'SQLite FTS5', 'MCP'],
-    href: 'https://github.com/rizkhal/pdf-to-mcp',
-  },
-  {
-    name: 'Cita',
-    year: '2026',
-    summary: 'SKD CPNS practice platform with per-question AI tutoring and a bilingual interface.',
-    stack: ['TypeScript', 'React'],
-    href: 'https://github.com/rizkhal/cat',
-  },
-  {
-    name: 'Relay',
-    year: '2026',
-    summary: 'Self-hosted chat widget that routes visitor questions to your own MCP server through an LLM.',
-    stack: ['TypeScript', 'MCP'],
-    href: 'https://github.com/rizkhal/relay',
-  },
-  {
-    name: 'Orbis',
-    year: '2026',
-    summary: 'Traffic simulator with a stealth HTTP engine and a real headless browser engine.',
-    stack: ['TypeScript', 'undici', 'Playwright'],
-    href: 'https://github.com/rizkhal/orbis',
-  },
-  {
-    name: 'Stonks',
-    year: '2026',
-    summary: 'Crypto scalping research monorepo: deterministic backtests over Binance klines, stored and charted.',
-    stack: ['TypeScript', 'SQLite', 'React'],
-    href: 'https://github.com/rizkhal/stonks',
+    name: 'Ayuwind',
+    year: '2022',
+    summary:
+      'Multi-theme admin dashboard template built on Alpine.js and Tailwind. No build step, no framework runtime, just markup that ships.',
+    stack: ['Alpine.js', 'Tailwind', 'Nunjucks'],
+    href: 'https://github.com/rizkhal/ayuwind',
   },
   {
     name: 'IkanHub',
     year: '2026',
-    summary: 'Fish-only placeholder image service, sized and seeded by URL.',
-    stack: ['TypeScript'],
+    summary:
+      'Fish-only placeholder image service, sized and seeded by URL. A Hono API with a React front end, running live at ikanhub.space.',
+    stack: ['Hono', 'React', 'Vite'],
     href: 'https://github.com/rizkhal/ikanhub.space',
   },
+]
+
+export const more: Project[] = [
   {
     name: 'Universe',
     year: '2026',
     summary: 'Portable dotfiles for macOS and Linux, with a safe-mode installer that backs up what it replaces.',
     stack: ['Lua', 'Shell'],
     href: 'https://github.com/rizkhal/universe',
+  },
+  {
+    name: 'Vue3 Offline First',
+    year: '2023',
+    summary: 'Todo app that keeps working with the network off, syncing through RxDB when it comes back.',
+    stack: ['Vue 3', 'RxDB'],
+    href: 'https://github.com/rizkhal/vue3-offline-first',
+  },
+  {
+    name: 'Moora',
+    year: '2022',
+    summary: 'Multi-objective optimisation implemented from the paper, wrapped in a Laravel interface.',
+    stack: ['PHP', 'Laravel'],
+    href: 'https://github.com/rizkhal/moora',
+  },
+  {
+    name: 'Alamat',
+    year: '2023',
+    summary: 'Resolves an Indonesian national ID number into a registered address through a small JSON API.',
+    stack: ['TypeScript'],
+    href: 'https://github.com/rizkhal/alamat',
+  },
+  {
+    name: 'Geocut',
+    year: '2024',
+    summary: 'Cuts a polygon down to size on a map and hands back the coordinates, without a GIS install.',
+    stack: ['Vue', 'Nuxt'],
+    href: 'https://github.com/rizkhal/geocut',
+  },
+  {
+    name: 'InerUI',
+    year: '2023',
+    summary: 'Accessible Vue component set built around developer experience rather than visual opinion.',
+    stack: ['TypeScript', 'Vue'],
+    href: 'https://github.com/rizkhal/inerui',
+  },
+  {
+    name: 'Inertable Vue',
+    year: '2023',
+    summary: 'The Vue side of Inertable, packaged so a table can be dropped into an existing Inertia page.',
+    stack: ['Vue'],
+    href: 'https://github.com/rizkhal/inertable-vue',
+  },
+  {
+    name: 'Yuq Ngaji',
+    year: '2021',
+    summary: 'Al-Quran reader for the browser with per-verse navigation and no build tooling.',
+    stack: ['Vue'],
+    href: 'https://github.com/rizkhal/yuq-ngaji',
+  },
+  {
+    name: 'AniFlix API',
+    year: '2023',
+    summary: 'The service layer behind AniFlix: catalogue, episodes, and stream resolution.',
+    stack: ['JavaScript'],
+    href: 'https://github.com/rizkhal/aniflix-api',
+  },
+  {
+    name: 'Fire Geolocation',
+    year: '2020',
+    summary: 'NodeMCU and a flame sensor reporting position over the network. Hardware, not a web app.',
+    stack: ['JavaScript', 'NodeMCU'],
+    href: 'https://github.com/rizkhal/fire-geolocation',
   },
 ]
 
@@ -137,15 +137,15 @@ export const stackGroups: { title: string; items: string[] }[] = [
   },
   {
     title: 'Backend',
-    items: ['Hono', 'Node.js', 'Bun', 'FastAPI', 'Postgres', 'SQLite', 'Prisma', 'Redis'],
+    items: ['Hono', 'Node.js', 'Laravel', 'Postgres', 'SQLite', 'Drizzle', 'Prisma'],
   },
   {
     title: 'Frontend',
-    items: ['React 19', 'Astro', 'Vue', 'Tailwind v4', 'Vite', 'Expo'],
+    items: ['React', 'Vue', 'Astro', 'Tailwind', 'Vite', 'Alpine.js'],
   },
   {
-    title: 'Data and ML',
-    items: ['YOLO', 'ONNX Runtime', 'InsightFace', 'RAG', 'FTS5', 'Leaflet'],
+    title: 'Desktop and data',
+    items: ['Electron', 'ONNX Runtime', 'RxDB', 'SQLite FTS5'],
   },
   {
     title: 'Infra',
@@ -153,6 +153,6 @@ export const stackGroups: { title: string; items: string[] }[] = [
   },
   {
     title: 'Protocols',
-    items: ['MCP', 'OAuth 2.0', 'REST', 'WebRTC', 'WHEP'],
+    items: ['REST', 'OAuth 2.0', 'WebSocket'],
   },
 ]

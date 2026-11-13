@@ -1,48 +1,46 @@
 ---
 const metrics = [
-  { value: '0.59', unit: 'm/px', label: 'Tile resolution, 529 tiles stitched with zero failures' },
-  { value: '13', unit: '/ 0', label: 'Ships found and false positives, YOLOv8s-OBB pass' },
-  { value: '0.527', unit: 'mAP', label: 'Water mask fine-tune, YOLO11n-seg over 720 images' },
-  { value: '0.20', unit: '%', label: 'Worst area error against five real permit documents' },
+  { value: '685', unit: 'installs', label: 'Packagist downloads for rizkhal/inertable since release' },
+  { value: '15', unit: 'stars', label: 'GitHub stars, with two forks carrying their own changes' },
+  { value: '2', unit: 'CI jobs', label: 'Test suite and php-cs-fixer, both green on every push' },
+  { value: '8.0', unit: 'PHP', label: 'Minimum runtime, no extensions beyond the standard build' },
 ]
 ---
 
-<section class="wrap py-20 md:py-28">
-  <div class="float-card reveal grid gap-10 p-7 md:p-12 lg:grid-cols-12 lg:gap-12">
+<section class="border-y border-line bg-surface">
+  <div class="wrap grid gap-12 py-16 md:py-24 lg:grid-cols-12 lg:gap-10">
     <div class="lg:col-span-5">
-      <p class="label">Specimen 03</p>
-      <h2 class="display mt-5 text-[clamp(1.9rem,3.6vw,2.9rem)]">
-        Coastal detection, checked against real documents
-      </h2>
+      <h2 class="text-2xl tracking-tight md:text-3xl">A package people install, not just a repo</h2>
 
-      <p class="mt-6 max-w-[46ch] text-sm leading-relaxed text-mist md:text-base">
-        CoastDet reads sub-meter satellite tiles and finds ships, docks, tanks, ponds, and new
-        construction along the shoreline. It also compares two epochs of the same tile to show what
-        changed. Every figure here comes from the repository's own test runs.
+      <p class="mt-5 max-w-[52ch] text-sm leading-relaxed text-muted md:text-base">
+        Inertable is a headless datatable for Laravel and Inertia. Sorting, filtering, and pagination
+        are handled on the server; the markup is left entirely to you, so a table can look like
+        whatever the page already looks like. It ships on Packagist with a test suite and a style
+        check running on every push. Every figure here comes from Packagist and the repository.
       </p>
 
       <a
-        href="https://github.com/rizkhal/tangkap"
+        href="https://github.com/rizkhal/inertable"
         target="_blank"
         rel="noopener"
-        class="link-underline mt-8 inline-block font-mono text-[11px] uppercase tracking-[0.16em] text-sun"
+        class="link-underline mt-7 inline-block font-mono text-xs uppercase tracking-[0.12em] text-accent"
       >
         Read the repository
       </a>
     </div>
 
     <div class="lg:col-span-7">
-      <dl class="grid gap-px bg-ochre/12 sm:grid-cols-2">
+      <dl class="grid gap-px bg-line sm:grid-cols-2">
         {
           metrics.map((metric) => (
-            <div class="bg-ink-2/70 p-6 md:p-7">
+            <div class="bg-surface p-6 md:p-7">
               <dt class="flex items-baseline gap-1.5">
-                <span class="display text-4xl tracking-tight text-paper md:text-5xl">
+                <span class="font-mono text-3xl tracking-tight text-text md:text-4xl">
                   {metric.value}
                 </span>
-                <span class="font-mono text-[11px] text-sun">{metric.unit}</span>
+                <span class="font-mono text-xs text-accent">{metric.unit}</span>
               </dt>
-              <dd class="mt-3 max-w-[32ch] text-xs leading-relaxed text-mist">{metric.label}</dd>
+              <dd class="mt-3 max-w-[34ch] text-xs leading-relaxed text-muted">{metric.label}</dd>
             </div>
           ))
         }
