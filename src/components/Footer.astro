@@ -2,27 +2,40 @@
 const year = new Date().getFullYear()
 ---
 
-<footer id="contact" class="border-t border-line">
-  <div class="wrap flex flex-col gap-6 py-10 md:flex-row md:items-center md:justify-between">
-    <div>
-      <p class="text-sm text-text">Rizkal</p>
-      <p class="mt-1 font-mono text-xs text-muted">Jakarta, Indonesia</p>
-    </div>
+<footer id="contact" class="relative mt-10">
+  <div class="horizon-rule"></div>
 
-    <div class="flex flex-wrap items-center gap-x-6 gap-y-2 font-mono text-xs uppercase tracking-[0.12em]">
+  <div class="wrap py-16 md:py-24">
+    <p class="label">Contact</p>
+
+    <h2 class="display mt-6 max-w-[18ch] text-[clamp(2.2rem,6vw,4.6rem)]">
+      Let's build something that shouldn't work.
+    </h2>
+
+    <div class="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
       <a
         href="https://github.com/rizkhal"
         target="_blank"
         rel="noopener me"
-        class="link-underline text-muted transition-colors hover:text-accent">GitHub</a
+        class="link-underline font-mono text-[11px] uppercase tracking-[0.16em] text-sun"
       >
+        github.com/rizkhal
+      </a>
       <a
         href="https://x.com/rixzkl"
         target="_blank"
         rel="noopener me"
-        class="link-underline text-muted transition-colors hover:text-accent">X</a
+        class="link-underline font-mono text-[11px] uppercase tracking-[0.16em] text-ochre"
       >
-      <span class="text-faint">{year}</span>
+        x.com/rixzkl
+      </a>
+    </div>
+
+    <div
+      class="mt-16 flex flex-col gap-3 border-t border-ochre/12 pt-6 font-mono text-[10px] uppercase tracking-[0.16em] text-ochre/60 sm:flex-row sm:items-center sm:justify-between"
+    >
+      <span>Rizkal / Jakarta, Indonesia</span>
+      <span>{year}</span>
     </div>
   </div>
 </footer>

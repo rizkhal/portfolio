@@ -1,6 +1,8 @@
 ---
 import '@fontsource-variable/geist'
 import '@fontsource-variable/geist-mono'
+import '@fontsource-variable/fraunces/full.css'
+import '@fontsource-variable/fraunces/full-italic.css'
 import '../styles/global.css'
 
 interface Props {
@@ -18,40 +20,115 @@ const { title, description } = Astro.props
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#0a0a0b" />
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="canonical" href="https://rizkal.wtf/" />
+    <noscript><style>.reveal{opacity:1 !important;transform:none !important}</style></noscript>
+    <meta name="theme-color" content="#08060f" />
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://rizkal.wtf/" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="https://rizkal.wtf/avatar.png" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@rixzkl" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
   </head>
-  <body class="min-h-[100dvh] antialiased">
-    <slot />
 
-    <script>
-      const items = document.querySelectorAll<HTMLElement>('.reveal')
-      const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  <body class="relative min-h-dvh">
+    <div class="scene" aria-hidden="true">
+      <div class="scene__sky"></div>
+      <div class="scene__ring"></div>
+      <div class="scene__sun"></div>
+      <div class="scene__sea"></div>
+      <div class="scene__reflection scene__reflection--wide"></div>
+      <div class="scene__reflection"></div>
+      <div class="scene__cloud scene__cloud--a"></div>
+      <div class="scene__cloud scene__cloud--b"></div>
+      <div class="scene__cloud scene__cloud--c"></div>
+      <div class="scene__vignette"></div>
+      <div class="scene__grain"></div>
+    </div>
 
-      if (reduce || !('IntersectionObserver' in window)) {
-        items.forEach((el) => el.classList.add('is-in'))
-      } else {
-        const io = new IntersectionObserver(
-          (entries) => {
-            for (const entry of entries) {
-              if (entry.isIntersecting) {
-                entry.target.classList.add('is-in')
-                io.unobserve(entry.target)
-              }
+    <div class="cursor-light" aria-hidden="true"></div>
+
+    <div class="relative z-10">
+      <slot />
+    </div>
+
+    <script is:inline>
+      // reveal on scroll: IO for the normal case, plus a sweep so a fast
+      // scroll or an anchor jump can never leave a section invisible
+      const revealables = [...document.querySelectorAll('.reveal')]
+      const show = (el) => el.classList.add('is-in')
+
+      const io = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              show(entry.target)
+              io.unobserve(entry.target)
             }
+          }
+        },
+        { rootMargin: '0px 0px -10% 0px', threshold: 0.05 }
+      )
+      revealables.forEach((el) => io.observe(el))
+
+      let sweepRaf = 0
+      const sweep = () => {
+        sweepRaf = 0
+        const limit = window.innerHeight * 0.94
+        for (const el of revealables) {
+          if (el.classList.contains('is-in')) continue
+          if (el.getBoundingClientRect().top < limit) {
+            show(el)
+            io.unobserve(el)
+          }
+        }
+      }
+      const queueSweep = () => {
+        if (!sweepRaf) sweepRaf = requestAnimationFrame(sweep)
+      }
+      window.addEventListener('scroll', queueSweep, { passive: true })
+      window.addEventListener('resize', queueSweep, { passive: true })
+      window.addEventListener('load', queueSweep)
+      queueSweep()
+
+      // pointer light
+      const light = document.querySelector('.cursor-light')
+      if (light && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        let raf = 0
+        window.addEventListener(
+          'pointermove',
+          (e) => {
+            if (raf) return
+            raf = requestAnimationFrame(() => {
+              light.style.setProperty('--mx', e.clientX + 'px')
+              light.style.setProperty('--my', e.clientY + 'px')
+              raf = 0
+            })
           },
-          { rootMargin: '0px 0px -12% 0px', threshold: 0.15 },
+          { passive: true }
         )
-        items.forEach((el) => io.observe(el))
+      }
+
+      // magnetic tilt on levitating cards
+      const fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches
+      const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      if (fine && !still) {
+        document.querySelectorAll('[data-tilt]').forEach((card) => {
+          card.addEventListener('pointermove', (e) => {
+            const r = card.getBoundingClientRect()
+            const px = (e.clientX - r.left) / r.width - 0.5
+            const py = (e.clientY - r.top) / r.height - 0.5
+            card.style.setProperty('--ry', (px * 7).toFixed(2) + 'deg')
+            card.style.setProperty('--rx', (-py * 5).toFixed(2) + 'deg')
+          })
+          card.addEventListener('pointerleave', () => {
+            card.style.setProperty('--ry', '0deg')
+            card.style.setProperty('--rx', '0deg')
+          })
+        })
       }
     </script>
   </body>
